@@ -28,7 +28,7 @@ module.exports = function(options) {
   }, options);
   return thru.obj(function(file, enc, cb) {
     var ext, salted;
-    if (file.isFile()) {
+    if (!file.isNull() && !file.isStream()) {
       ext = path.extname(file.path).substr(1);
       if (opts[ext] == null) {
         ext = 'coffee';

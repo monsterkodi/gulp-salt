@@ -23,7 +23,7 @@ module.exports = (options) ->
     
     thru.obj (file, enc, cb) ->
         
-        if file.isFile()
+        if not file.isNull() and not file.isStream()
             ext = path.extname(file.path).substr 1
             ext = 'coffee' if not opts[ext]?
             salted = salt file.contents.toString('utf8'), opts[ext]
