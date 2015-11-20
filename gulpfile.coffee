@@ -1,5 +1,6 @@
 gulp   = require 'gulp'
 coffee = require 'gulp-coffee'
+bump   = require 'gulp-bump'
 
 gulp.task 'default', ->
                 
@@ -7,6 +8,11 @@ gulp.task 'default', ->
         gulp.src(e.path) .pipe(coffee({bare: true})) .pipe(gulp.dest '.')
 
 gulp.task 'coffee', ->
-    gulp.src('index.coffee') 
-    .pipe coffee({bare: true})
+    gulp.src 'index.coffee'
+    .pipe coffee bare: true
+    .pipe gulp.dest '.'
+
+gulp.task 'bump', ->
+    gulp.src 'package.json'
+    .pipe bump()
     .pipe gulp.dest '.'
