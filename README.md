@@ -22,11 +22,10 @@ it is most useful when attached to a watch:
 #### gulpfile.coffee
 
 ```coffee
-gulp   = require 'gulp'
-salt   = require 'gulp-salt'
+gulp = require 'gulp'
+salt = require 'gulp-salt'
 
-gulp.task 'default', ->
-                
+gulp.task 'default', ->        
     gulp.watch ['**/*.coffee'], (e) -> 
         gulp.src e.path, base: './'
         .pipe salt()
