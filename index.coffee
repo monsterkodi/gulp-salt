@@ -41,7 +41,16 @@ module.exports = (options) ->
 
 asciiLines = (s, options) ->
         s = s.toLowerCase()
-        cs = (chars[c.charCodeAt(0)-97].split('\n') for c in s when 97 <= c.charCodeAt(0) < 97+26)
+        
+        cs = []
+        for c in s
+            if 97 <= c.charCodeAt(0) < 97+26
+                cs.push chars[c.charCodeAt(0)-97].split('\n')
+            else if special[c[0]]]?
+                cs.push chars[c[0]].split('\n')
+                
+        # cs = (chars[c.charCodeAt(0)-97].split('\n') for c in s when 97 <= c.charCodeAt(0) < 97+26)
+        
         zs = _.zip.apply(null, cs)
         rs = _.map(zs, (j) -> j.join('  '))
         if options.character? and options.character.length == 1
@@ -76,6 +85,33 @@ salt = (s, options) ->
 000       000   000  000  0000     000   
 000        0000000   000   000     000   
 ###
+
+special = {
+    '-': \
+"""
+\ \ \ \ \ \ \ \ \ \ 
+\ 0000000\ 
+\ 0000000\ 
+\ 0000000\ 
+\ \ \ \ \ \ \ \ \ \ 
+"""
+    '_': \
+"""
+\ \ \ \ \ \ \ \ \ \ 
+\ \ \ \ \ \ \ \ \ \ 
+\ \ \ \ \ \ \ \ \ \ 
+\ \ \ \ \ \ \ \ \ \ 
+\ 0000000\ 
+"""
+    ' ': \
+"""
+\ \ \ \ \ \ \ \ \ \ 
+\ \ \ \ \ \ \ \ \ \ 
+\ \ \ \ \ \ \ \ \ \ 
+\ \ \ \ \ \ \ \ \ \ 
+\ \ \ \ \ \ \ \ \ \ 
+"""
+}
 
 chars = [ \
 """
