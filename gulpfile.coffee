@@ -30,4 +30,4 @@ gulp.task 'default', ->
     gulp.watch 'index.coffee', (e) ->
         gulp.src(e.path) .pipe(coffee({bare: true})) .pipe(gulp.dest '.')
 
-gulp.task 'release', ['noon', 'coffee'] ->
+gulp.task 'release', ['noon', 'coffee'], ->

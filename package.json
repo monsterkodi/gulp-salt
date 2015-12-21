@@ -1,6 +1,6 @@
 {
   "name": "gulp-salt",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "description": "gulp plugin that inserts ascii headers",
   "author": {
     "name": "monsterkodi",
