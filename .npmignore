@@ -1,3 +1,4 @@
 bin
 *.coffee
 font.noon
+.npmignore
